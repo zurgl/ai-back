@@ -1,0 +1,38 @@
+[package]
+name = "server"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+futures-util = { workspace = true }
+serde_json = { workspace = true }
+tokio = { workspace = true }
+serde = { workspace = true }
+uuid = { workspace = true }
+futures = { workspace = true }
+shared = { workspace = true }
+actors = { workspace = true }
+csrf = { workspace = true }
+
+tokio-stream = {version = "0.1.12", features = ["sync"] }
+console-subscriber = "0.1.8"
+axum = { version = "0.6.12", features = ["ws", "headers", "macros", "http2"] }
+axum-server = { version = "0.4.7", features = ["tls-rustls"] }
+tower = { version = "0.4.13", features = ["util"] }
+tower-http = { version = "0.4.0", features = ["fs", "trace", "cors"] }
+nacl = "0.5.3"
+axum-extra = { version = "0.7.2", features = ["cookie"] }
+chrono = { version = "0.4.24", features = ["serde"] }
+jsonwebtoken = "8.3.0"
+bs58 = "0.5.0"
+sqlx = { version = "0.6.3", features = ["runtime-async-std-native-tls", "postgres", "chrono", "uuid"] }
+time = "0.3.20"
+
+[lib]
+name = "server"
+path = "src/lib.rs"
+
+[dev-dependencies]
+hyper = { version = "1.0.0-rc.3", features = ["full"] }
+eventsource-client = { version = "0.11.0" }
+anyhow = "1.0.70"

@@ -1,0 +1,18 @@
+Application (
+  server: Server (
+    port: 8446,
+    address: [0,0,0,0],
+    cors_allowed_origins: [
+        "https://dev.ai-generated.dev",
+        "https://www.ai-generated.dev",
+        "https://ai-generated.dev",
+        "https://localhost:8443",
+        "http://localhost:8443",
+    ],
+  ),
+  channel: Channel (
+    mpsc_size: 200,
+    bordcast_size: 200,
+  ),
+  version: 32,
+)

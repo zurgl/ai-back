@@ -1,0 +1,26 @@
+[package]
+name = "loader"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+futures-util = { workspace = true }
+tokio = { workspace = true }
+serde = { workspace = true }
+indicatif = { workspace = true }
+shared = { workspace = true }
+
+reqwest = { version = "0.11.16", features = ["brotli"] }
+tracing = "0.1"
+flate2 = "1.0"
+url = "2.3.1"
+hyper = { version = "0.14.26", features = ["client", "tcp", "http1", "http2", "stream"] }
+hyper-rustls = { version = "0.24.0", features = ["http2"] }
+rustls-native-certs = "0.6.2"
+rustls-pemfile = "1.0.2"
+rustls = "0.21.0"
+http = "0.2"
+
+[lib]
+name = "loader"
+path = "src/lib.rs"

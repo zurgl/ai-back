@@ -1,0 +1,10 @@
+LMTSConfig (
+  vocab_size: 49408,
+  embed_dim: 1024,
+  intermediate_size: 4096,
+  max_position_embeddings: 77,
+  num_hidden_layers: 23,
+  num_attention_heads: 16,
+  projection_dim: 512,
+  activation: "Gelu",
+)

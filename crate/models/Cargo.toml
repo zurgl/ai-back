@@ -1,0 +1,27 @@
+[package]
+name = "models"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+futures-util = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+tokio = { workspace = true }
+serde = { workspace = true }
+tch = { workspace = true }
+rust-bert = { workspace = true }
+torch-sys = { workspace = true }
+diffusers = { workspace = true }
+indicatif = { workspace = true }
+shared =  { workspace = true }
+
+regex = "1.6.0"
+anyhow = "1"
+memmap2 = "0.6.2"
+safetensors = "0.3.1"
+config = { version = "0.13.3", default-features = false, features = ["yaml", "ron", "toml"] }
+
+[lib]
+name = "models"
+path = "src/lib.rs"

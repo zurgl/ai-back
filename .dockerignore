@@ -1,0 +1,10 @@
+.dockerignore
+diffusion/
+target/
+.vscode/
+Dockerfile
+wiki/
+justfile
+LICENSE
+images/
+.ai-data/

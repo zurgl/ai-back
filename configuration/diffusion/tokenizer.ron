@@ -1,0 +1,4 @@
+TokenizerConfig (
+  max_position_embeddings: 77,
+  pad_with: Some("!"),
+)

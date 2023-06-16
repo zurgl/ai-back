@@ -1,0 +1,137 @@
+Models (
+  models: [
+    Model (
+      name: "distilbert_sst2",
+      ressources: [ 
+        Ressource (
+          url: "https://huggingface.co/distilbert-base-uncased-finetuned-sst-2-english/resolve/main/vocab.txt",
+          name: "vocab.txt",
+          h2: false,
+          deflate: false,
+        ),
+        Ressource (
+          url: "https://huggingface.co/distilbert-base-uncased-finetuned-sst-2-english/resolve/main/config.json",
+          name: "config.json",
+          h2: false,
+          deflate: false,
+        ),
+        Ressource (
+          url: "https://huggingface.co/distilbert-base-uncased-finetuned-sst-2-english/resolve/main/model.safetensors",
+          name: "model.safetensors",
+          h2: false,
+          deflate: false,
+        ),
+      ]
+    ),
+    Model (
+      name: "llama_7B",
+      ressources: [
+        Ressource (
+          url: "https://huggingface.co/hf-internal-testing/llama-tokenizer/resolve/main/tokenizer.json",
+          name: "llama-tokenizer.json",
+          h2: false,
+          deflate: false,
+        ),
+        Ressource (
+          url: "",
+          name: "llama.safetensors",
+          h2: false,
+          deflate: false,
+        ),
+      ]
+    ),
+    Model (
+      name: "m2m100_418M",
+      ressources: [ 
+        Ressource (
+          url: "https://huggingface.co/facebook/m2m100_418M/resolve/main/vocab.json",
+          name: "vocab.json",
+          h2: false,
+          deflate: false,
+        ),
+        Ressource (
+          url: "https://huggingface.co/facebook/m2m100_418M/resolve/main/sentencepiece.bpe.model",
+          name: "sentencepiece.bpe.model",
+          h2: false,
+          deflate: false,
+        ),
+        Ressource (
+          url: "https://huggingface.co/facebook/m2m100_418M/resolve/main/config.json",
+          name: "config.json",
+          h2: false,
+          deflate: false,
+        ),
+        Ressource (
+          url: "https://huggingface.co/facebook/m2m100_418M/resolve/main/rust_model.ot",
+          name: "rust_model.ot",
+          h2: false,
+          deflate: false,
+        ),
+      ]
+    ),
+    Model (
+      name: "distilbart_cnn_6_6",
+      ressources: [ 
+        Ressource (
+          url: "https://huggingface.co/sshleifer/distilbart-cnn-6-6/resolve/main/vocab.json",
+          name: "vocab.json",
+          h2: false,
+          deflate: false,
+        ),
+        Ressource (
+          url: "https://huggingface.co/sshleifer/distilbart-cnn-6-6/resolve/main/config.json",
+          name: "config.json",
+          h2: false,
+          deflate: false,          
+        ),
+        Ressource (
+          url: "https://huggingface.co/sshleifer/distilbart-cnn-6-6/resolve/main/rust_model.ot",
+          name: "rust_model.ot",
+          h2: false,
+          deflate: false,
+        ),
+        Ressource (
+          url: "https://huggingface.co/sshleifer/distilbart-cnn-6-6/resolve/main/tokenizer_config.json",
+          name: "tokenizer_config.json",
+          h2: false,
+          deflate: false,
+        ),
+        Ressource (
+          url: "https://huggingface.co/sshleifer/distilbart-cnn-6-6/resolve/main/merges.txt",
+          name: "merges.txt",
+          h2: false,
+          deflate: false,
+        )
+      ]
+    ),
+    Model (
+      name: "stable_diffusion_2_1",
+      ressources: [
+        Ressource (
+          url: "https://huggingface.co/stabilityai/stable-diffusion-2-1/resolve/main/text_encoder/model.safetensors",
+          name: "lmts.safetensors",
+          h2: false,
+          deflate: false,
+        ),
+        Ressource (
+          url: "https://huggingface.co/stabilityai/stable-diffusion-2-1/resolve/main/vae/diffusion_pytorch_model.safetensors",
+          name: "vae.safetensors",
+          h2: false,
+          deflate: false,
+        ),
+        Ressource (
+          url: "https://huggingface.co/stabilityai/stable-diffusion-2-1/resolve/main/unet/diffusion_pytorch_model.safetensors",
+          name: "unet.safetensors",
+          h2: false,
+          deflate: false,
+        ),
+        Ressource (
+          url: "https://github.com/openai/CLIP/raw/main/clip/bpe_simple_vocab_16e6.txt.gz",
+          name: "vocab.txt",
+          h2: false,
+          deflate: true,
+        )
+      ]
+    ),
+  ],
+)
