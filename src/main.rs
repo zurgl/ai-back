@@ -23,37 +23,43 @@ pub enum LoaderCmd {
 #[derive(Debug, Clone, Subcommand)]
 pub enum DiffusionCmd {
     Oneshot {
-        #[arg(long, default_value = "painting robot at the beach funny carton manga")]
+        #[arg(
+            long,
+            default_value = "star physic cosmos dust twister world water god"
+        )]
         prompt: String,
         #[arg(long, default_value_t = 768)]
         height: i64,
         #[arg(long, default_value_t = 768)]
         width: i64,
-        #[arg(long, default_value_t = 235742)]
+        #[arg(long, default_value_t = 2357)]
         seed: i64,
     },
     Sequence {
-        #[arg(long, default_value = "painting robot at the beach funny carton manga")]
+        #[arg(
+            long,
+            default_value = "painting husky at the moutain funny carton manga"
+        )]
         prompt: String,
         #[arg(long, default_value_t = 768)]
         height: i64,
         #[arg(long, default_value_t = 768)]
         width: i64,
         #[arg(long)]
-        inference: Option<i64>,
+        inference: i64,
         #[arg(long, default_value_t = 235742)]
         seed: i64,
     },
     Parallel {
-        #[arg(long, default_value = "painting robot at the beach funny carton manga")]
+        #[arg(long, default_value = "dreams cosmic star light water heaven")]
         prompt: String,
-        #[arg(long, default_value_t = 768)]
+        #[arg(long, default_value_t = 1072)]
         height: i64,
-        #[arg(long, default_value_t = 768)]
+        #[arg(long, default_value_t = 1504)]
         width: i64,
-        #[arg(long)]
-        inference: Option<i64>,
-        #[arg(long, default_value_t = 235742)]
+        #[arg(long, default_value_t = 8)]
+        inference: i64,
+        #[arg(long, default_value_t = 42)]
         seed: i64,
     },
 }
@@ -107,7 +113,6 @@ pub enum Command {
         cmd: LlmCmd,
     },
 }
-
 #[derive(Parser, Clone, Debug)]
 #[command(author, version, about, long_about = None)]
 pub struct Args {
@@ -151,7 +156,7 @@ async fn main() -> Result<(), &'static str> {
                     height,
                     width,
                     seed,
-                    inference: inference.unwrap(),
+                    inference,
                 })
                 .await
             }
@@ -166,7 +171,7 @@ async fn main() -> Result<(), &'static str> {
                 height,
                 width,
                 seed,
-                inference: inference.unwrap(),
+                inference,
             }),
         },
         Command::Server { cmd } => match cmd {

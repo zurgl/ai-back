@@ -60,6 +60,7 @@ impl Oneshot {
         tch::manual_seed(args.seed);
         let no_grad_guard = tch::no_grad_guard();
         let device = tch::Device::cuda_if_available();
+        println!("{:?}", device);
 
         println!("- Build the Tokenizer\n");
         let tokenizer = Tokenizer::create(Default::default()).expect("cannot create tokenizer");

@@ -70,6 +70,10 @@ async fn model_process(
     let model_type = instruction.model_type();
     let task_id = instruction.task_id();
 
+    println!("{model_type:?}");
+    println!("{task_id:?}");
+    println!("{owner:?}");
+
     let tx = match task_id {
         Some(task_id) => {
             let pair = register_map.get(&task_id).ok_or(
@@ -210,6 +214,7 @@ pub async fn run(
     }
 
     while let Some(command) = rx.recv().await {
+        println!("{command:?}");
         let source = EmitSource::from(command.boxed_instruction()).set_task_id(tokio::task::id());
         let response: Result<(), ActorError> = match command {
             Command::Kill(instruction) => model_kill(&mut model_register, &tx, instruction).await,
