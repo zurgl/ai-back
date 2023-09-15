@@ -19,7 +19,7 @@ pub async fn handler(
     let user_id = user.pubkey;
     let stream = BroadcastStream::new(state.read().await.tx.subscribe())
         .map(|value| value.ok().unwrap())
-        .filter(move |message| Owner::owner(message) == user_id || message.is_health())
+        // .filter(move |message| Owner::owner(message) == user_id || message.is_health())
         .map(|data| Event::default().json_data(data));
     Sse::new(stream).keep_alive(KeepAlive::default())
 }

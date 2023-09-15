@@ -11,3 +11,4 @@
 * see if you can do a pure front in rust.
 * complete the wiki.
 * write an article on medium about your stuff.
+* update rust version and dep.
