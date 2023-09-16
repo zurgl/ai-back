@@ -10,6 +10,7 @@ loader = { workspace = true }
 tokio = { workspace = true }
 models = { workspace = true }
 server = { workspace = true }
+tch = { workspace = true }
 
 [workspace]
 members = [
@@ -33,12 +34,11 @@ rust-bert = { git = "https://github.com/guillaume-be/rust-bert", rev = "ba57704"
 tch = "0.13.0"
 diffusers = "0.3.0"
 torch-sys = "0.13"
-indicatif = {version = "0.17.3", features = ["rayon"]}
+indicatif = { version = "0.17.3", features = ["rayon"] }
 clap = { version = "4.0.19", features = ["derive"] }
 shared = { path = "./crate/shared" }
-actors = { path = "./crate/actors"  }
-models = { path = "./crate/models"  }
-loader = { path = "./crate/loader"  }
-server = { path = "./crate/server"  }
-csrf = { path = "./crate/csrf"  }
-
+actors = { path = "./crate/actors" }
+models = { path = "./crate/models" }
+loader = { path = "./crate/loader" }
+server = { path = "./crate/server" }
+csrf = { path = "./crate/csrf" }

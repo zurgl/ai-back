@@ -112,6 +112,7 @@ dependencies = [
  "loader",
  "models",
  "server",
+ "tch",
  "tokio",
 ]
 
