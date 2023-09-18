@@ -211,7 +211,6 @@ impl Emit for MessageType {
                 message_type,
             }),
         };
-
         tx.send(message)
     }
 }

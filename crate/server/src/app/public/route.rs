@@ -4,6 +4,7 @@ use axum::{
     routing::{get, post},
     Extension,
 };
+use tower_http::services::ServeDir;
 
 #[derive(Debug)]
 pub struct State {
@@ -42,6 +43,7 @@ pub async fn build(
         .route("/health", get(health))
         .route("/login", post(super::login::handler))
         .route("/", get(super::handler))
+        .nest_service("/images", ServeDir::new("images"))
         .layer(Extension(state))
         .with_state(config)
 }

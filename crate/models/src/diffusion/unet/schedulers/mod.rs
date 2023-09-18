@@ -93,6 +93,7 @@ pub trait Scheduler: Send {
         match &tx {
             Some(tx) => {
                 let message = SchedulerTick { tick: 0, steps };
+                // println!("{message:?}");
                 MessageType::SchedulerStep
                     .emit(
                         tx,
@@ -102,7 +103,9 @@ pub trait Scheduler: Send {
                     .map_err(|err| format!("{err}"))
                     .unwrap();
             }
-            None => (),
+            None => {
+                println!("inside here with none tx");
+            }
         };
 
         for (index, timestep) in self.timesteps().iter().enumerate() {
@@ -128,6 +131,7 @@ pub trait Scheduler: Send {
                         tick: index + 1,
                         steps,
                     };
+                    // println!("{message:?}");
                     MessageType::SchedulerStep
                         .emit(
                             tx,

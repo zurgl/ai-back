@@ -7,6 +7,7 @@ use axum_extra::extract::cookie::{Cookie, SameSite};
 use serde_json::json;
 
 pub async fn handler() -> Result<impl IntoResponse, (StatusCode, Json<serde_json::Value>)> {
+    println!("Logged out");
     let cookie = Cookie::build("token", "")
         .path("/")
         .max_age(time::Duration::hours(-1))

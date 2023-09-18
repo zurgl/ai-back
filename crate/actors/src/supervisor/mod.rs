@@ -210,6 +210,7 @@ pub async fn run(
     }
 
     while let Some(command) = rx.recv().await {
+        println!("{command:?}");
         let source = EmitSource::from(command.boxed_instruction()).set_task_id(tokio::task::id());
         let response: Result<(), ActorError> = match command {
             Command::Kill(instruction) => model_kill(&mut model_register, &tx, instruction).await,

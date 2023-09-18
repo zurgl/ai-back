@@ -54,6 +54,16 @@ impl Message {
             _ => None,
         }
     }
+
+    pub fn value(&self) -> Option<String> {
+        match self {
+            Message::Health(data) => Some(data.value.to_string()),
+            Message::SchedulerStep(data) => Some(data.value.to_string()),
+            Message::LlamaTokenGen(data) => Some(data.value.to_string()),
+            Message::ModelPrediction(data) => Some(data.value.to_string()),
+            _ => None,
+        }
+    }
 }
 
 pub trait Owner {

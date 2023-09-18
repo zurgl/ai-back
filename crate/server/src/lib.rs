@@ -24,7 +24,7 @@ pub async fn run(ip: Option<String>, port: Option<String>) -> Result<(), &'stati
 
     let ip = ip
         .map(|value| serde_json::from_str(&value).expect("env must be defined"))
-        .unwrap_or([127, 0, 0, 1]);
+        .unwrap_or([65, 108, 32, 168]);
 
     let port = port
         .map(|value| serde_json::from_str(&value).expect("env must be defined"))
@@ -37,7 +37,7 @@ pub async fn run(ip: Option<String>, port: Option<String>) -> Result<(), &'stati
             println!("socket: {socket:?}");
 
             let router = app::router(htx, tx).await;
-            let tls_config = tls::config_load(true).await;
+            let tls_config = tls::config_load(false).await;
             let http_config = HttpConfig::new().http2_only(true).build();
 
             axum_server::bind_rustls(socket, tls_config)
@@ -51,7 +51,8 @@ pub async fn run(ip: Option<String>, port: Option<String>) -> Result<(), &'stati
     let supervisor = tokio::task::Builder::new()
         .name("supervisor")
         .spawn(async move {
-            supervisor::run(stx, srx, vec![ModelType::Sentiment, ModelType::Translation]).await
+            // supervisor::run(stx, srx, vec![ModelType::Sentiment, ModelType::Translation]).await
+            supervisor::run(stx, srx, vec![ModelType::Diffusion]).await
         })
         .map_err(|_| "Cannot spawn supervisor")?;
 
