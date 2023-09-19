@@ -21,6 +21,7 @@
     "target": true,
     "README": false,
     "LICENSE": false,
+    "archives": true,
     ".cargo": false,
     "Cargo.lock": false,
   },

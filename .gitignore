@@ -5,7 +5,6 @@ configuration/archives
 new
 images
 python
-.env
 log
 .data
 .ai-data
@@ -17,3 +16,5 @@ docker.key
 convert.py
 images/
 norm.rs
+archives
+.envrc_back
