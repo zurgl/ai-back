@@ -108,7 +108,9 @@ dependencies = [
 name = "airs"
 version = "0.1.0"
 dependencies = [
+ "anyhow",
  "clap",
+ "diffusers",
  "loader",
  "models",
  "server",

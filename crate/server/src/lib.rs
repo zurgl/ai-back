@@ -1,11 +1,6 @@
 use axum_server::HttpConfig;
-use shared::{
-    command::Command,
-    constants::{chan, server::PORT},
-    message::Message,
-    types::ModelType,
-};
-use std::net::SocketAddr;
+use shared::{command::Command, constants::chan, message::Message, types::ModelType};
+use std::net::{Ipv4Addr, SocketAddr};
 use tokio::sync::{broadcast, mpsc};
 
 pub mod app;
@@ -15,20 +10,22 @@ pub mod tls;
 
 use actors::supervisor;
 
-pub async fn run(ip: Option<String>, port: Option<String>) -> Result<(), &'static str> {
+pub async fn run() -> Result<(), &'static str> {
     console_subscriber::init();
 
     let (htx, srx) = mpsc::channel::<Command>(chan::MPSC_LEN);
     let (stx, _unused) = broadcast::channel::<Message>(chan::BORDCAST_LEN);
     let tx = stx.clone();
 
-    let ip = ip
-        .map(|value| serde_json::from_str(&value).expect("env must be defined"))
-        .unwrap_or([65, 108, 32, 168]);
+    let ip = option_env!("IP")
+        .unwrap_or("127.0.0.1")
+        .parse::<Ipv4Addr>()
+        .expect("unable to parse ip");
 
-    let port = port
-        .map(|value| serde_json::from_str(&value).expect("env must be defined"))
-        .unwrap_or(PORT);
+    let port = option_env!("PORT")
+        .unwrap_or("7443")
+        .parse::<u16>()
+        .expect("unable to parse port");
 
     let axum = tokio::task::Builder::new()
         .name("axum server")

@@ -11,6 +11,18 @@ tokio = { workspace = true }
 models = { workspace = true }
 server = { workspace = true }
 tch = { workspace = true }
+diffusers = { workspace = true }
+anyhow = "*"
+
+
+[[bin]]
+name = "sketch"
+path = "src/bin/sketch.rs"
+
+[[bin]]
+name = "airs"
+path = "src/main.rs"
+
 
 [workspace]
 members = [

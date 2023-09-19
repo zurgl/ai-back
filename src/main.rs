@@ -9,7 +9,7 @@ use models::translation::Translation;
 pub enum LoaderCmd {
     List,
     Clean,
-    Load,
+    All,
     Remove {
         model: String,
         ressource: Option<String>,
@@ -64,13 +64,13 @@ pub enum DiffusionCmd {
     },
 }
 
-#[derive(Debug, Clone, Subcommand)]
-pub enum ServerCmd {
-    Run {
-        port: Option<String>,
-        ip: Option<String>,
-    },
-}
+// #[derive(Debug, Clone, Subcommand)]
+// pub enum ServerCmd {
+//     Run {
+//         port: Option<String>,
+//         ip: Option<String>,
+//     },
+// }
 
 #[derive(Debug, Clone, Subcommand)]
 pub enum LlmCmd {
@@ -104,10 +104,7 @@ pub enum Command {
         #[command(subcommand)]
         cmd: DiffusionCmd,
     },
-    Server {
-        #[command(subcommand)]
-        cmd: ServerCmd,
-    },
+    Serve,
     Llm {
         #[command(subcommand)]
         cmd: LlmCmd,
@@ -128,7 +125,7 @@ async fn main() -> Result<(), &'static str> {
         Command::Loader { cmd } => match cmd {
             LoaderCmd::Clean => loader::clean().await,
             LoaderCmd::List => loader::list().await,
-            LoaderCmd::Load => loader::load().await,
+            LoaderCmd::All => loader::load().await,
             LoaderCmd::Remove { model, ressource } => loader::remove(model, ressource).await,
             LoaderCmd::Add { model, ressource } => loader::add(model, ressource).await,
         },
@@ -174,9 +171,7 @@ async fn main() -> Result<(), &'static str> {
                 inference,
             }),
         },
-        Command::Server { cmd } => match cmd {
-            ServerCmd::Run { port, ip } => server::run(ip, port).await,
-        },
+        Command::Serve => server::run().await,
         Command::Llm { cmd } => match cmd {
             LlmCmd::Translate {
                 prompt,
